@@ -25,10 +25,8 @@ app.set('view engine', 'hbs')
 // Index
 app.get('/', (req, res) => {
     Charity.find()
-    .then(charities => {
-        res.render('home', {charities: charities})
-    }).catch(err => {
-        console.log(err.message);
+    .then(charity => {
+        res.render('home', {charity: charity})
     })
 })
 
