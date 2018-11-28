@@ -1,0 +1,22 @@
+<form method="post" action="/donations">
+    <fieldset>
+        <legend>New Donation</legend>
+        {{!-- Title --}}
+        <p>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label for="message">Message</label><br>
+            <input type="text" name="message" />
+        </p>
+        <p>
+            <label for="donationAmount">Donation Amount</label>
+            <input type="Number" name="donationAmount">
+        </p>
+    </fieldset>
+        {{!-- button --}}
+    <p>
+        <button type="submit">Donate</button>
+    </p>
+</form>
