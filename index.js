@@ -79,6 +79,17 @@ app.put('/donations/:id', (req, res) =>{
     })
 })
 
+// Deleting the donation
+app.delete("/donations/:id", (req,res) => {
+    console.log("DELETE donation");
+    Donation.findByIdAndDelete(req.params.id)
+    .then((donation) => {
+        res.redirect('/')
+    }).catch((err) => {
+        console.log(err.message);
+    })
+})
+
 // Telling the server to connect to port 3000
 app.listen(3000, () =>{
     console.log('App listening on port 3000!');

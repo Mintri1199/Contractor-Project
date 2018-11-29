@@ -5,3 +5,8 @@
 <h3>${{donation.donationAmount}}</h3>
 
 <p><a href="/donations/{{donation._id}}/edit">Edit Message</a></p>
+
+{{!-- Delete button uses method override since delete is not a method in html --}}
+<p><form method="post" action="/donations/{{donation._id}}?_method=DELETE">
+    <button type="submit">DELETE</button>
+</form></p>
