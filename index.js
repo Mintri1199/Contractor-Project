@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 mongoose.connect('mongodb://localhost/Relearning-Back-End')
 const path = require('path')
 var exphbs = require('express-handlebars').create({
@@ -19,10 +20,10 @@ const Donation = require("./models/donation")
 // Middlewares
 app.engine('hbs', exphbs.engine)
 app.set('view engine', 'hbs')
+// override with post having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }));
 //mongoose.connect(mongoUri, {useNewUrlParser: true } )
-
-
 
 // Routes
 // Index
@@ -55,6 +56,25 @@ app.get('/donations/:id', (req, res) => {
     Donation.findById(req.params.id).then((donation) => {
         res.render('donation-show', {donation: donation})
     }).catch((err) => {
+        console.log(err.message);
+    })
+})
+
+// Edit the donation (message only)
+app.get('/donations/:id/edit', (req, res) => {
+    Donation.findById(req.params.id, function(err, donation) {
+        res.render('donation-edit', {donation: donation})
+    }).catch((err) => {
+        console.log(err.message);
+    })
+})
+
+// Update the donation's message
+app.put('/donations/:id', (req, res) =>{
+    Donation.findByIdAndUpdate(req.params.id, req.body)
+    .then(donation => {
+        res.redirect(`/donations/${donation._id}`)
+    }).catch(err => {
         console.log(err.message);
     })
 })

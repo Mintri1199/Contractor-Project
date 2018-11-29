@@ -1,0 +1,11 @@
+<form method="post" action="/donations/{{donation._id}}?_method=PUT">
+    <fieldset>
+        <legend>Edit Donation message</legend>
+        {{!-- MESSAGE --}}
+        <label for="message">Message</label><br>
+        <input id="message" type="text" name="message" value="{{donation.message}}">
+    </fieldset>
+    <p>
+        <button type="submit">Save Message</button>
+    </p>
+</form>
