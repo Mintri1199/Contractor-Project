@@ -6,7 +6,5 @@
 {{/each}} --}}
 
 {{#each donation}}
-    <h1>{{this.name}}</h1>
-    <h2>{{this.message}}</h2>
-    <h3>${{this.donationAmount}}</h3>
+    <h1><a href="/donations/{{this._id}}">{{this.name}}</a></h1>
 {{/each}}

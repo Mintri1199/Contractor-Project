@@ -35,20 +35,27 @@ app.get('/', (req, res) => {
     })
 })
 
-// Show
+// New
 app.get("/donations/new", (req, res) => {
     res.render('donation-new')
 })
 
 //Create
 app.post("/donations" , (req, res) => {
-    
     Donation.create(req.body).then((donation) => {
         console.log(req.body);
-        res.redirect('/');
+        res.redirect(`/donations/${donation._id}`); // redirect to the newly created donation
     }).catch((err) => {
         console.log(err.message);
-        
+    })
+})
+
+// Show the donation
+app.get('/donations/:id', (req, res) => {
+    Donation.findById(req.params.id).then((donation) => {
+        res.render('donation-show', {donation: donation})
+    }).catch((err) => {
+        console.log(err.message);
     })
 })
 
