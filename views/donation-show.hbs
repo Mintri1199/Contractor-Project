@@ -1,12 +1,16 @@
-<a href="/">Back to Home</a>
+<div class="row">
+    {{!-- These element will take up 6 columns but offset it by 3 columns on the left --}}
+    {{!-- Which will make it center --}}
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1>{{donation.name}}</h1>
+        <h2>{{donation.message}}</h2>
+        <h3>${{donation.donationAmount}}</h3>
 
-<h1>{{donation.name}}</h1>
-<h2>{{donation.message}}</h2>
-<h3>${{donation.donationAmount}}</h3>
+        <p><a href="/donations/{{donation._id}}/edit">Edit Message</a></p>
 
-<p><a href="/donations/{{donation._id}}/edit">Edit Message</a></p>
-
-{{!-- Delete button uses method override since delete is not a method in html --}}
-<p><form method="post" action="/donations/{{donation._id}}?_method=DELETE">
-    <button type="submit">DELETE</button>
-</form></p>
+        {{!-- Delete button uses method override since delete is not a method in html --}}
+        <p><form method="post" action="/donations/{{donation._id}}?_method=DELETE">
+            <button class="btn btn-primary" type="submit">DELETE</button>
+        </form></p>    
+    </div>
+</div>
