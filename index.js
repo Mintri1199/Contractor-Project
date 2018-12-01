@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-
+const port =  process.env.PORT || 3000
 const path = require('path')
 var exphbs = require('express-handlebars').create({
     layoutsDir: path.join(__dirname, 'views/layouts'),
@@ -21,7 +21,7 @@ const donations = require('./controllers/donations');
 
 // Mongoose
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/Relearning-Back-End')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Relearning-Back-End')
 
 // Handlebars
 app.engine('hbs', exphbs.engine)
@@ -31,15 +31,15 @@ app.set('view engine', 'hbs')
 app.use(methodOverride('_method')) // Override with POST having ?_method
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // Access controllers
 app.use(donations)
 
 // Telling the server to connect to port 3000
-app.listen(3000, () => {
-    console.log('App listening on port 3000!');
+app.listen(process.env.PORT || 3000, function(){
+    console.log('server listening on port %d in %s mode', this.address().port, app.settings.env);
+    
 })
 
-//mongoose.connect(mongoUri, {useNewUrlParser: true } )
+
 
 module.exports = app;
