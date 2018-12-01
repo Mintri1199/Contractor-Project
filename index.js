@@ -3,7 +3,6 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const port =  process.env.PORT || 3000
 const path = require('path')
 var exphbs = require('express-handlebars').create({
     layoutsDir: path.join(__dirname, 'views/layouts'),
@@ -17,7 +16,8 @@ const Charity = require('./models/charity')
 const Donation = require("./models/donation")
 
 // Controllers
-const donations = require('./controllers/donations');
+//const donations = require('./controllers/donations');
+const charities = require('./controllers/charities')
 
 // Mongoose
 const mongoose = require('mongoose')
@@ -32,7 +32,9 @@ app.use(methodOverride('_method')) // Override with POST having ?_method
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Access controllers
-app.use(donations)
+//app.use(donations)
+app.use(charities)
+
 
 // Telling the server to connect to port 3000
 app.listen(process.env.PORT || 3000, function(){
