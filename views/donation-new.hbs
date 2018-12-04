@@ -1,7 +1,8 @@
 <div class="row">
     {{!-- Making the form center --}}
     <div class="col-sm-6 col-sm-offset-2">
-        <form method="post" action="/donations">
+        <form method="post" action="/charities/{{charityId}}">
+            
             <fieldset>
                 <legend>New Donation</legend>
                 {{!-- Title --}}
@@ -19,11 +20,11 @@
                     <label for="donationAmount">Donation Amount</label><br>
                     <input type="Number" name="donationAmount">
                 </div>
-            </fieldset>
-                {{!-- button --}}
+
             <div class='form-group'>
                 <button class="btn btn-primary" type="submit">Donate</button>
             </div>
+            <input type="hidden" name="charityId" value="{{charityId}}">
         </form>
     </div>
 </div>
