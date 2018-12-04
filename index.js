@@ -1,9 +1,11 @@
 // Initials
+if(!process.env.PORT){
+    require("dotenv").config()
+}
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const port =  process.env.PORT || 3000
 const path = require('path')
 var exphbs = require('express-handlebars').create({
     layoutsDir: path.join(__dirname, 'views/layouts'),
@@ -18,10 +20,14 @@ const Donation = require("./models/donation")
 
 // Controllers
 const donations = require('./controllers/donations');
+const charities = require('./controllers/charities')
+
+// API controller
+const charitiesAPI = require('./controllers/api/charities')
 
 // Mongoose
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Relearning-Back-End')
+mongoose.connect('mongodb://localhost/Relearning-Back-End', { useNewUrlParser: true })
 
 // Handlebars
 app.engine('hbs', exphbs.engine)
@@ -32,14 +38,15 @@ app.use(methodOverride('_method')) // Override with POST having ?_method
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Access controllers
+app.use(charities)
 app.use(donations)
+app.use(charitiesAPI)
 
 // Telling the server to connect to port 3000
 app.listen(process.env.PORT || 3000, function(){
     console.log('server listening on port %d in %s mode', this.address().port, app.settings.env);
     
 })
-
 
 
 module.exports = app;
