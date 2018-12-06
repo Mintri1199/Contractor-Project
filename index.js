@@ -21,6 +21,7 @@ const Donation = require("./models/donation")
 // Controllers
 const donations = require('./controllers/donations');
 const charities = require('./controllers/charities')
+const reviews = require('./controllers/reviews')
 
 // API controller
 const charitiesAPI = require('./controllers/api/charities')
@@ -40,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Access controllers
 app.use(charities)
 app.use(donations)
+app.use(reviews)
 app.use(charitiesAPI)
 
 // Telling the server to connect to port 3000

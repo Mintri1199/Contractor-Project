@@ -1,0 +1,8 @@
+<h1>This is the reviews index page</h1>
+<button><a href="/charities/{{charityId}}/reviews/new">New Review</a></button>
+<div>
+{{#each reviews}}
+    <small><a href="/charities/{{this.charityId}}/reviews/{{this.id}}">{{this.name}}</a></small>
+    <p>{{this.review}}</p>
+{{/each}}
+</div>

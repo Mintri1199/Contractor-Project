@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-var CharitySchema = mongoose.Schema({
+let CharitySchema = mongoose.Schema({
     name: String,
     description: String,
     ratings: Number

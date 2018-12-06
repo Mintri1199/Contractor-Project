@@ -4,7 +4,7 @@ const app =  require('express')()
 // New
 app.get("/charities/:ein/donations/new", (req, res) => {
     Donation.find({charityId: req.params.ein}).then((charity) => {
-        res.render('donation-new', {charity, charityId: req.params.ein});
+        res.render('donation/donation-new', {charity, charityId: req.params.ein});
     }).catch((err) => {
         console.log(err.message);
     })
@@ -23,7 +23,7 @@ app.post("/charities/:ein/" , (req, res) => {
 // Show the donation
 app.get('/charities/:ein/donations/:id', (req, res) => {
     Donation.findById(req.params.id).then((donation) => {
-        res.render('donation-show', {donation: donation})
+        res.render('donation/donation-show', {donation: donation})
     }).catch((err) => {
         console.log(err.message);
     })
@@ -31,8 +31,8 @@ app.get('/charities/:ein/donations/:id', (req, res) => {
 
 // Edit the donation (message only)
 app.get('/charities/:ein/donations/:id/edit', (req, res) => {
-    Donation.findById(req.params.id, function(err, donation) {
-        res.render('donation-edit', {donation: donation})
+    Donation.findById(req.params.id, (err, donation) => {
+        res.render('donation/donation-edit', {donation: donation})
     }).catch((err) => {
         console.log(err.message);
     })

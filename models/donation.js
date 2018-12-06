@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
-var dontationSchema = mongoose.Schema({
+let dontationSchema = mongoose.Schema({
     name: String,
     message: String,
     donationAmount: Number,
+    
     charityId: {type: String, required: true}
 })
 
