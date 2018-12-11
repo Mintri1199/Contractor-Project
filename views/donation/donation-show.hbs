@@ -1,11 +1,11 @@
-<form action="/charities/{{donation.charityId}}">
-    <button class="btn btn-primary">Back</button>
+<form action="/charities/{{donation.charityId}}/donations">
+    <button class="btn btn-primary">Back to table</button>
 </form>
 
 <div class="row">
     {{!-- These element will take up 6 columns but offset it by 3 columns on the left --}}
     {{!-- Which will make it center --}}
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 offset-5">
         <h1>{{donation.name}}</h1>
         <h2>{{donation.message}}</h2>
         <h3>${{donation.donationAmount}}</h3>

@@ -20,7 +20,6 @@ app.get('/charities/:ein/reviews/new', (req, res) => {
 // Create
 app.post('/charities/:ein/reviews', (req, res) => {
     Reviews.create(req.body).then( (review) => {
-        console.log(req.body);
         console.log('from review-new');
         // should redirect to reviews index
         res.redirect(`/charities/${req.params.ein}/reviews`)

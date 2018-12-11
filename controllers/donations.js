@@ -4,12 +4,11 @@ const app =  require('express')()
 // Index
 app.get("/charities/:ein/donations/", (req, res) => {
     Donation.find().then((donations) => {
-        res.render('donation/donation-index', {donations: donations})
+        res.render('donation/donation-index', {donations: donations, charityId: req.params.ein})
     }).catch((err) => {
         console.log(err.message);
     })
 })
-
 
 // New
 app.get("/charities/:ein/donations/new", (req, res) => {
@@ -24,7 +23,7 @@ app.get("/charities/:ein/donations/new", (req, res) => {
 app.post("/charities/:ein" , (req, res) => {
     Donation.create(req.body).then((donation) => {
         console.log(req.body);
-        res.redirect(`/charities/${req.params.ein}`); // redirect to the newly created donation
+        res.redirect(`/charities/${req.params.ein}/donations`); // redirect to the newly created donation
     }).catch((err) => {
         console.log(err.message);
     })
