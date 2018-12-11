@@ -11,7 +11,7 @@ app.get("/charities/:ein/donations/new", (req, res) => {
 })
 
 //Create
-app.post("/charities/:ein/" , (req, res) => {
+app.post("/charities/:ein" , (req, res) => {
     Donation.create(req.body).then((donation) => {
         console.log(req.body);
         res.redirect(`/charities/${req.params.ein}`); // redirect to the newly created donation

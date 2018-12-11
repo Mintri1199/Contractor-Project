@@ -1,4 +1,17 @@
-{{#each charities}}
-    <h1><a href="/charities/{{this.ein}}">{{this.charityName}}</a></h1>
-    <small>{{this.ein}}</small><br>
-{{/each}}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-columns">
+        {{#each charities}}
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">{{this.charityName}}</h4>
+                    <div class="text-truncate">
+                    {{this.tagLine}}
+                    </div>
+                <a href="/charities/{{this.ein}}" class="btn btn-primary">Visit</a>
+            </div>
+        </div>
+        {{/each}}
+        </div>
+    </div>
+</div>
