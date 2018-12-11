@@ -1,17 +1,23 @@
-<h1>{{charity.charityName}}</h1>
-<h2>{{charity.mission}}</h2>
-<h3>{{charity.currentRating.rating}}</h3>
-<a href="{{charity.websiteURL}}">Website</a>
-<button><a href="/charities/{{charity.ein}}/donations/new">New Donation</a></button><br>
-<button><a href="/charities/{{charity.ein}}/reviews/new">New Review</a></button><br>
-<h1><a href="/charities/{{charity.ein}}/reviews">Reviews</a></h1><br>
-{{#each reviews}}
-    <small><a href="/charities/{{this.charityId}}/reviews/{{this.id}}">{{this.name}}</a></small>
-    <small>{{this.message}}</small>
-{{/each}}
+<div class="row">
+    <div class="col-md-12"><h1>{{charity.charityName}}</h1></div>
+    <div class="w-100"></div>
+    <div class="col-sm-3">
+        <img src="{{charity.currentRating.ratingImage.large}}">
+    </div>
+    <div class="w-100"></div>
+    <div class="col-sm-3">
+        <label for="">Description:</label>
+    </div>
 
-<h1>Donators</h1>
-{{#each donations}}
-    <small><a href="/charities/{{this.charityId}}/donations/{{this.id}}">{{this.name}}</a></small>
-    <small>${{this.donationAmount}}</small><br>
-{{/each}}
+    <p>{{charity.mission}}</p>
+    <a href="{{charity.websiteURL}}">Website</a>
+    <button><a href="/charities/{{charity.ein}}/donations/new">New Donation</a></button><br>
+    <button><a href="/charities/{{charity.ein}}/reviews/new">New Review</a></button><br>
+    <h1><a href="/charities/{{charity.ein}}/reviews">Reviews</a></h1><br>
+    {{#each reviews}}
+        <small><a href="/charities/{{this.charityId}}/reviews/{{this.id}}">{{this.name}}</a></small>
+        <small>{{this.message}}</small>
+    {{/each}}
+
+    <h1><a href="/charities/{{charity.ein}}/donations">Donations</a></h1>
+</div>

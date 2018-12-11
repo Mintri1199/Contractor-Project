@@ -1,6 +1,16 @@
 const Donation = require('../models/donation')
 const app =  require('express')()
 
+// Index
+app.get("/charities/:ein/donations/", (req, res) => {
+    Donation.find().then((donations) => {
+        res.render('donation/donation-index', {donations: donations})
+    }).catch((err) => {
+        console.log(err.message);
+    })
+})
+
+
 // New
 app.get("/charities/:ein/donations/new", (req, res) => {
     Donation.find({charityId: req.params.ein}).then((charity) => {

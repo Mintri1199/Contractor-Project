@@ -1,0 +1,14 @@
+ <table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Donation Amount</th>
+        </tr>
+    </thead>
+        {{#each donations}}
+            <tbody>
+                <td><a href="/charities/{{this.charityId}}/donations/{{this.id}}">{{this.name}}</a></td>
+                <td>{{this.donationAmount}}</td>
+            </tbody>
+        {{/each}}
+    </table>
