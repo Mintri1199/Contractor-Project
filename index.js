@@ -1,7 +1,6 @@
 // Initials
-if(!process.env.PORT){
-    require("dotenv").config()
-}
+require("dotenv").config()
+
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')

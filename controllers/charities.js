@@ -20,10 +20,8 @@ app.get('/', (req, res) => {
 // Show one charity profile
 app.get('/charities/:ein', (req, res) => {
     charityNavigator.orgsEin(req.params.ein).then((charity) => {
-        Donation.find({charityId: req.params.ein}).then((donations) => {
-            Reviews.find({charityId: req.params.ein}).then((reviews) => {
-                res.render('charity/charity-show' ,{charity: charity, donations: donations, reviews: reviews})
-            })
+        Reviews.find({charityId: req.params.ein}).then((reviews) => {
+            res.render('charity/charity-show' ,{charity: charity, reviews: reviews})
         })
     }).catch((err) => {
         console.log(err.message);

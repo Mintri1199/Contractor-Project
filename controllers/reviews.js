@@ -5,6 +5,8 @@ const app = require('express')()
 app.get('/charities/:ein/reviews', (req, res) => {
     Reviews.find({charityId: req.params.ein}).then((reviews)=> {
         res.render('review/review-index', {reviews: reviews, charityId: req.params.ein})
+    }).catch((err) => {
+        console.log(err.message);
     })
 })
 
