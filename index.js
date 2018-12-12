@@ -27,7 +27,8 @@ const charitiesAPI = require('./controllers/api/charities')
 
 // Mongoose
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/Relearning-Back-End', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Relearning-Back-End', { useNewUrlParser: true })
+
 
 // Handlebars
 app.engine('hbs', exphbs.engine)
