@@ -4,7 +4,6 @@ let reviewSchema = mongoose.Schema({
     name: String,
     review: String,
     rating: Number,
-    edited: Boolean, 
     charityId: {type: String , required: true}
 })
 

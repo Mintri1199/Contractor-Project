@@ -1,5 +1,5 @@
 // Initials
-require("dotenv").config()
+if (!process.env.PORT) { require('dotenv').config() }
 
 const express = require('express')
 const app = express()

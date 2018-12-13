@@ -1,7 +1,6 @@
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         <form method="post" action="/charities/{{charityId}}/reviews">
-            <h1>{{charityId}}</h1>
             <fieldset>
                 <legend>New Review</legend>
 
@@ -9,12 +8,12 @@
                     <label for="name">Name</label>
                     <input type="text" name="name">
                 </div>
-
-                <div class="form-group">
-                    <label for="review">Review</label>
-                    <input type="text" name="review">
-                </div>
                 
+                <div class="form-group">
+                    <label for="review">Message</label><br>
+                    <textarea class="form-control" name="review" type='text' id="review" rows="10"></textarea>
+                </div>
+
                 <div class='form-group'>
                     <label for="rating">Rate</label>
                     <select name="rating" id="rating">

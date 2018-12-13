@@ -1,6 +1,5 @@
 <div class="row">
     <div class="col-md-12"><h1>{{charity.charityName}}</h1></div>
-    <div class="w-100"></div>
     <div class="col-md-3">
         <img src="{{charity.currentRating.ratingImage.large}}">
     </div>
@@ -11,13 +10,21 @@
     <div class="w-100"></div>
     <p class="col-sm-9">{{charity.mission}}</p>
     <div class="w-100"></div>
-    <a href="{{charity.websiteURL}}" class="col-sm-3">Website</a>
+    <h3 class="col-sm-3"><a href="{{charity.websiteURL}}">Website</a></h3>
     <div class="w-100"></div>
-    <h1 class="col-sm-6"><a href="/charities/{{charity.ein}}/reviews">Reviews</a></h1>
-    {{#each reviews}}
-        <small><a href="/charities/{{this.charityId}}/reviews/{{this.id}}">{{this.name}}</a></small>
-        <small>{{this.message}}</small>
-    {{/each}}
+    <h2 class="col-sm-3"><a href="/charities/{{charity.ein}}/reviews">Reviews</a></h2>
+    <h2 class="col-sm-3 offset-6"><a href="/charities/{{charity.ein}}/donations">Donations</a></h2>
+    <div class="col-sm-12">     
+        {{#each reviews}}
+            <div class="media">
+                <div class="media-body">
+                    <h5 class="mt-0"><a href="/charities/{{this.charityId}}/reviews/{{this.id}}">{{this.name}}</a></h5>
+                    {{this.rating}} Star<br>
+                    <p class="font-weight-normal">{{this.review}}</p>
+                </div>
+            </div>
+        {{/each}}
+    </div>
 
-    <h1><a href="/charities/{{charity.ein}}/donations">Donations</a></h1>
+    
 </div>
